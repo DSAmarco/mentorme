@@ -1,4 +1,4 @@
 # mentorme
 poosd project
 
-what da hell
+- Christopher Dupree
