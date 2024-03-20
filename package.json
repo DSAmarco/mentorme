@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "express": "^4.18.3",
+    "express": "^4.19.0",
     "mongoose": "^8.2.2",
     "nodemon": "^3.1.0",
     "react": "^18.2.0",
@@ -26,8 +26,12 @@
     "vite": "^4.0.0"
   },
   "engines": {
-    "node": "14.21.3",
-    "npm": "6.14.18",
+    "node": "20.11.1",
+    "npm": "10.5.0",
     "yarn": "1.22.19"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:DSAmarco/mentorme.git",
+  "author": "doitmann <cdupree404@gmail.com>",
+  "license": "MIT"
 }
