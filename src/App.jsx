@@ -1,6 +1,7 @@
 import React from "react"
 import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
+// import Featured from "./components/featured/Featured"
 import Home from "./pages/home/Home"
 import Gigs from "./pages/gigs/Gigs"
 import Gig from "./pages/gig/Gig"
