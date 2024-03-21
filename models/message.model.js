@@ -2,39 +2,17 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const MessageSchema = new Schema({
-    username:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    email:{
-        type: String,
-        required: true,
-        unique: true,
-    },
-    password:{
+    ConversationId:{
         type:String,
         required:true,
     },
-    img:{
-        type:String,
-        required:false,
-    },
-    country:{
+    UserId:{
         type:String,
         required:true,
-    },
-    phone:{
-        type:String,
-        required:false,
     },
     desc:{
         type:String,
-        required:false,
-    },
-    isSeller:{
-        type:Boolean,
-        default:false,
+        required:true,
     },
 },{
     timestamps: true
