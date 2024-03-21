@@ -1,43 +1,34 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
-    username:{
+const ConversationSchema = new Schema({
+    id:{
         type:String,
         required:true,
-        unique:true,
-    },
-    email:{
-        type: String,
-        required: true,
         unique: true,
     },
-    password:{
+    sellerId:{
         type:String,
         required:true,
     },
-    img:{
-        type:String,
-        required:false,
-    },
-    country:{
+    buyerId:{
         type:String,
         required:true,
     },
-    phone:{
-        type:String,
-        required:false,
-    },
-    desc:{
-        type:String,
-        required:false,
-    },
-    isSeller:{
+    readBySeller:{
         type:Boolean,
-        default:false,
+        required:true,
+    },
+    readByBuyer:{
+        type:Boolean,
+        required:true,
+    },
+    lastMessage:{
+        type:String,
+        required:false,
     },
 },{
     timestamps: true
 });
 
-export default mongoose.model("User", userSchema)
+export default mongoose.model("Conversation", ConversationSchema)

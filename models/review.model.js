@@ -1,43 +1,26 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
-    username:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    email:{
-        type: String,
-        required: true,
-        unique: true,
-    },
-    password:{
+const ReviewSchema = new Schema({
+    gigId:{
         type:String,
         required:true,
     },
-    img:{
-        type:String,
-        required:false,
-    },
-    country:{
+    userId:{
         type:String,
         required:true,
     },
-    phone:{
-        type:String,
-        required:false,
+    star:{
+        type:Number,
+        required:true,
+        enum:[1,2,3,4,5]
     },
     desc:{
         type:String,
-        required:false,
-    },
-    isSeller:{
-        type:Boolean,
-        default:false,
+        required:true,
     },
 },{
     timestamps: true
 });
 
-export default mongoose.model("User", userSchema)
+export default mongoose.model("Review", ReviewSchema)
