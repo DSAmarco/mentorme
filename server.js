@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRoute from "./routes/user.route.js";
 
 const app = express();
 dotenv.config();
@@ -9,12 +10,14 @@ mongoose.set('strictQuery', true);
 
 const connect = async()=>{
     try{
-        await mongoose.connect("mongodb+srv://xyesol:1234@atlascluster.upok7ff.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster");        console.log("Connected to mongoDB!");
+        await mongoose.connect("mongodb+srv://DSAmarco:TT9tSBlESTMopgdu@mentorme.gtjpzjb.mongodb.net/?retryWrites=true&w=majority&appName=mentorme");        
+        console.log("Connected to mongoDB!");
     } catch (error) {
         console.log(error);
     }
 };
 
+app.use("/api/users", userRoute);
 
 app.listen(8800, ()=>{
     connect();
