@@ -34,8 +34,8 @@ const Footer = () => {
                         <h2>Support</h2>
                         <span>Help & Support</span>
                         <span>Trust & Safety</span>
-                        <span>Selling on Liverr</span>
-                        <span>Buying on Liverr</span>
+                        <span>Selling on mentorme</span>
+                        <span>Buying on mentorme</span>
                     </div>
                     <div className="item">
                         <h2>Community</h2>
@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className="bottom">
                     <div className="left">
                         <h2>fiverr</h2>
-                        <span>© Fiverr International Ltd. 2024</span>
+                        <span>© mentorme International Ltd. 2024</span>
                     </div>
                     <div className="right">
                         <div className="social">

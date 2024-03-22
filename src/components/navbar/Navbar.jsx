@@ -27,7 +27,7 @@ const Navbar = () => {
 
     const currentUser = {
         id:1,
-        username:"Super User",
+        username:"John Doe",
         isSeller:true
     }
 
@@ -36,12 +36,12 @@ const Navbar = () => {
             <div className="container">
                 <div className="logo">
                     <Link to="/" className="link">
-                        <span className="text">fiverr</span>
+                        <span className="text">mentorme</span>
                     </Link>
                     <span className="dot">.</span>
                 </div>
                 <div className="links">
-                    <span>Fiverr Business</span>
+                    <span>mentorme Business</span>
                     <span>Explore</span>
                     <span>English</span>
                     <span>Sign in</span>
@@ -50,7 +50,7 @@ const Navbar = () => {
                     {currentUser && (
                         <div className="user" onClick={()=>setOpen(!open)}>
                             <img 
-                                src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+                                src="./img/anon.png" 
                                 alt=""
                             />
                             <span>{currentUser?.username}</span>
