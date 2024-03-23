@@ -1,9 +1,7 @@
-import React, { useEffect } from "react"
-import { Link } from 'react-router-dom'
-import "./Navbar.scss"
-import { SassNumber } from "sass"
-import { useLocation } from "react-router-dom"
-import newRequest from "../../utils/newRequest"
+import React, { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
+import "./Navbar.scss";
 
 const { useState } = React;
 
@@ -27,6 +25,8 @@ const Navbar = () => {
     }, [])
 
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    const navigate = useNavigate();
 
     const handleLogout = async ()=>{
         try {
