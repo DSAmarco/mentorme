@@ -34,7 +34,7 @@ const GigSchema = new Schema({
         type: String,
         required: true,
     },
-    img: {
+    images: {
         type: [String],
         required: false,
     },
