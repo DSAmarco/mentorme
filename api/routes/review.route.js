@@ -1,26 +1,15 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+import express from "express";
+import { verifyToken } from "../middleware/jwt.js";
+import {
+    createReview,
+    getReviews,
+    deleteReview,
+} from "../controllers/review.controller.js";
 
-const ReviewSchema = new Schema({
-    gigId: {
-        type: String,
-        required: true,
-    },
-    userId: {
-        type: String,
-        required: true,
-    },
-    star: {
-        type: Number,
-        required: true,
-        enum: [1, 2, 3, 4, 5]
-    },
-    desc: {
-        type: String,
-        required: true,
-    },
-}, {
-    timestamps: true
-});
+const router = express.Router();
 
-export default mongoose.model("Review", ReviewSchema)
+router.post("/", verifyToken, createReview)
+router.get("/:gigId", getReviews)
+router.delete("/:id", deleteReview)
+
+export default router;
