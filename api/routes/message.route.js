@@ -2,7 +2,6 @@ import express from "express";
 import {
     createMessage,
     getMessages,
-    updateMessages,
 } from "../controllers/message.controller.js";
 import { verifyToken } from "../middleware/jwt.js";
 

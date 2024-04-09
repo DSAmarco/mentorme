@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Gigs.scss";
 import GigCard from "../../components/gigCard/GigCard";
-import newRequest from "../../utils/newRequest";
 import { useQuery } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
 import { useLocation } from "react-router-dom";
 
 function Gigs() {
@@ -12,8 +12,6 @@ function Gigs() {
   const maxRef = useRef();
 
   const { search } = useLocation();
-
-  console.log(location);
 
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["gigs"],
@@ -40,7 +38,7 @@ function Gigs() {
 
   const apply = () => {
     refetch();
-  }
+  };
 
   return (
     <div className="gigs">
@@ -79,8 +77,8 @@ function Gigs() {
           {isLoading
             ? "loading"
             : error
-              ? "Something went wrong"
-              : data.map((gig) => (<GigCard key={gig._id} item={gig} />))}
+            ? "Something went wrong!"
+            : data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
       </div>
     </div>
