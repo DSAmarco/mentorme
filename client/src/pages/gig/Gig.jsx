@@ -130,7 +130,7 @@ function Gig() {
                 </div>
               </div>
             )}
-            <Reviews gigId={id}/>
+            <Reviews gigId={id} />
           </div>
           <div className="right">
             <div className="price">
@@ -157,7 +157,7 @@ function Gig() {
               ))}
             </div>
             <Link to={`/pay/${id}`}>
-              <button>Continue</button>
+            <button>Continue</button>
             </Link>
           </div>
         </div>

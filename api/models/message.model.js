@@ -1,12 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const MessageSchema = new Schema({
-    ConversationId: {
+    conversationId: {
         type: String,
         required: true,
     },
-    UserId: {
+    userId: {
         type: String,
         required: true,
     },

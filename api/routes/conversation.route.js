@@ -1,34 +1,17 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+import express from "express";
+import {
+    createConversation,
+    getConversations,
+    getSingleConversation,
+    updateConversation,
+} from "../controllers/conversation.controller.js";
+import { verifyToken } from "../middleware/jwt.js";
 
-const ConversationSchema = new Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    sellerId: {
-        type: String,
-        required: true,
-    },
-    buyerId: {
-        type: String,
-        required: true,
-    },
-    readBySeller: {
-        type: Boolean,
-        required: true,
-    },
-    readByBuyer: {
-        type: Boolean,
-        required: true,
-    },
-    lastMessage: {
-        type: String,
-        required: false,
-    },
-}, {
-    timestamps: true
-});
+const router = express.Router();
 
-export default mongoose.model("Conversation", ConversationSchema)
+router.get("/", verifyToken, getConversations);
+router.post("/", verifyToken, createConversation);
+router.get("/single/:id", verifyToken, getSingleConversation);
+router.put("/:id", verifyToken, updateConversation);
+
+export default router;

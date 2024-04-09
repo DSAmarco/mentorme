@@ -1,41 +1,12 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+import express from "express";
+import { verifyToken } from "../middleware/jwt.js";
+import { getOrders, intent, confirm } from "../controllers/order.controller.js";
 
-const OrderSchema = new Schema({
-    gigId: {
-        type: String,
-        required: true,
-    },
-    img: {
-        type: String,
-        required: false,
-    },
-    title: {
-        type: String,
-        required: true,
-    },
-    price: {
-        type: Number,
-        required: true,
-    },
-    sellerId: {
-        type: String,
-        required: true,
-    },
-    buyerId: {
-        type: String,
-        required: true,
-    },
-    isCompleted: {
-        type: Boolean,
-        required: false,
-    },
-    payment_intent: {
-        type: String,
-        required: true,
-    },
-}, {
-    timestamps: true
-});
+const router = express.Router();
 
-export default mongoose.model("Order", OrderSchema)
+// router.post("/:gigId", verifyToken, createOrder);
+router.get("/", verifyToken, getOrders);
+router.post("/create-payment-intent/:id", verifyToken, intent);
+router.put("/", verifyToken, confirm);
+
+export default router;
