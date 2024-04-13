@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import upload from "../../utils/upload";
-import "./Register.scss";
+import "./Edit.scss";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import getCurrentUser from "../../utils/getCurrentUser";
 
-function Register() {
+
+function Edit() {
   const [file, setFile] = useState(null);
   const [user, setUser] = useState({
+    originalUsername: "",
     username: "",
     email: "",
     password: "",
@@ -18,6 +21,29 @@ function Register() {
 
   const [errorMessage, setErrorMessage] = useState(""); // New state for error message
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch user's existing information and populate the form fields
+    const fetchUserData = async () => {
+      try {
+        const currentUser = getCurrentUser(); // Assuming this endpoint returns user data
+        const userData = {
+          originalUsername: currentUser.username,
+          username: currentUser.username,
+          email: currentUser.email,
+          password: currentUser.password,
+          img: currentUser.img,
+          country: currentUser.country,
+          isSeller: currentUser.isSeller,
+          desc: currentUser.desc
+        };
+        setUser(userData);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUserData();
+  }, []);
 
   const handleChange = (e) => {
     setUser((prev) => {
@@ -35,27 +61,28 @@ function Register() {
 
     const url = await upload(file);
     try {
-      await newRequest.post("/auth/register", {
+      await newRequest.put("/auth/edit", {
         ...user,
-        img: url,
+        img: url || user.img,
       });
       navigate("/")
     } catch (err) {
-      setErrorMessage("Username or email already taken. Please try again."); // Set error message
+      setErrorMessage("Failed to update user information. Please try again.");
       console.log(err);
     }
   };
   return (
-    <div className="register">
+    <div className="edit">
       {errorMessage && <div className="error-message">{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         <div className="left">
-          <h1>Create a new account</h1>
+          <h1>Edit your account</h1>
           <label htmlFor="">Username</label>
           <input
             name="username"
             type="text"
             placeholder="Username"
+            value={user.username || ''}
             onChange={handleChange}
           />
           <label htmlFor="">Email</label>
@@ -63,6 +90,7 @@ function Register() {
             name="email"
             type="email"
             placeholder="Email"
+            value={user.email || ''}
             onChange={handleChange}
           />
           <label htmlFor="">Password</label>
@@ -80,9 +108,10 @@ function Register() {
             name="country"
             type="text"
             placeholder="Country"
+            value={user.country || ''}
             onChange={handleChange}
           />
-          <button type="submit">Register</button>
+          <button type="submit">Save Changes</button>
         </div>
         <div className="right">
           <h1>I want to become a Mentor</h1>
@@ -115,4 +144,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Edit;

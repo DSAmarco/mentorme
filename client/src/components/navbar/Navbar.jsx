@@ -70,6 +70,9 @@ function Navbar() {
                   <Link className="link" to="/messages">
                     Messages
                   </Link>
+                  <Link className="link" to="/edit">
+                    Edit Account
+                  </Link>
                   <Link className="link" onClick={handleLogout}>
                     Logout
                   </Link>

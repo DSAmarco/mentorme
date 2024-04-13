@@ -3,6 +3,47 @@ import createError from "../utils/createError.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+export const edit = async (req, res, next) => {
+  try {
+    //const userId = req.id
+    const user = await User.findOne({ username: req.body.originalUsername });
+
+    if (!user) {
+      return next(createError(404, "User not found!"));
+    }
+
+    // Update user fields if provided in the request body
+    if (req.body.username) {
+      user.username = req.body.username;
+    }
+    if (req.body.email) {
+      user.email = req.body.email;
+    }
+    if (req.body.password) {
+      const hash = bcrypt.hashSync(req.body.password, 5);
+      user.password = hash;
+    }
+    if (req.body.img) {
+      user.img = req.body.img;
+    }
+    if (req.body.country) {
+      user.country = req.body.country;
+    }
+    if (req.body.isSeller) {
+      user.isSeller = req.body.isSeller;
+    }
+    if (req.body.desc) {
+      user.desc = req.body.desc;
+    }
+    // Save the updated user
+    await user.save();
+
+    res.status(200).send("User has been updated.");
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const register = async (req, res, next) => {
   try {
     const hash = bcrypt.hashSync(req.body.password, 5);
