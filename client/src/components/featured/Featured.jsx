@@ -14,7 +14,7 @@ function Featured() {
       <div className="container">
         <div className="left">
           <h1>
-            Find the perfect <span>freelance</span> services for your business
+            Find the perfect <span>mentorship</span> opportunities in your niche
           </h1>
           <div className="search">
             <div className="searchInput">
@@ -36,7 +36,7 @@ function Featured() {
           </div>
         </div>
         <div className="right">
-          <img src="./img/man.png" alt="" />
+          <img src="./img/woman1.png" alt="" />
         </div>
       </div>
     </div>
