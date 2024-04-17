@@ -36,6 +36,32 @@ const Message = () => {
     e.target[0].value = "";
   };
 
+  const handleButtonAction = (buttonId, e) => {
+    switch (buttonId) {
+      case 1:
+        mutation.mutate({
+          conversationId: id,
+          desc: "Where should we meet?"
+        });
+        console.log("hellooo");
+        break;
+      case 2:
+        mutation.mutate({
+          conversationId: id,
+          desc: "What day works best for you?"
+        });
+        break;
+      case 3:
+        mutation.mutate({
+          conversationId: id,
+          desc: "Are you available soon?"
+        });
+        break;
+      default:
+        console.log("Unknown button action");
+    }
+  };
+
   return (
     <div className="message">
       <div className="container">
@@ -61,8 +87,17 @@ const Message = () => {
         )}
         <hr />
         <form className="write" onSubmit={handleSubmit}>
-          <textarea type="text" placeholder="write a message" />
-          <button type="submit">Send</button>
+          <div className="input-container">
+            <textarea placeholder="Send a message"></textarea>
+            <button type="submit">Send</button>
+          </div>
+          {!currentUser.isSeller && (
+            <div className="button-container">
+              <button type="button" onClick={() => handleButtonAction(1)}>"Where should we meet?"</button>
+              <button type="button" onClick={() => handleButtonAction(2)}>"What day works best for you?"</button>
+              <button type="button" onClick={() => handleButtonAction(3)}>"Are you available soon?"</button>
+            </div>
+          )}
         </form>
       </div>
     </div>
