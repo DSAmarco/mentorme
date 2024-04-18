@@ -44,6 +44,20 @@ export const getOrders = async (req, res, next) => {
     next(err);
   }
 };
+export const completeOrder = async (req, res, next) => {
+  try {
+    const order = await Order.findById(req.params.id);
+    const gig = await Gig.findById(req.params.id);
+    if (order.sellerId !== req.userId)
+      return next(createError(403, "You can delete only your gig!"));
+
+    await gig.save();
+
+  }
+  catch (err) {
+    next(err);
+  }
+};
 export const confirm = async (req, res, next) => {
   try {
     const orders = await Order.findOneAndUpdate(

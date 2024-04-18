@@ -30,6 +30,10 @@ const OrderSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    isFinished: {
+        type: Boolean,
+        default: false,
+    },
     payment_intent: {
         type: String,
         required: true,

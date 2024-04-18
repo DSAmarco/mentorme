@@ -33,6 +33,24 @@ const Orders = () => {
       }
     }
   };
+
+  const handleComplete = async (order) => {
+    const sellerId = order.sellerId;
+    const buyerId = order.buyerId;
+    const id = sellerId + buyerId;
+
+    try {
+      const res = await newRequest.get(`/conversations/single/${id}`);
+      navigate(`/message/${res.data.id}`);
+    } catch (err) {
+      if (err.response.status === 404) {
+        const res = await newRequest.post(`/conversations/`, {
+          to: currentUser.seller ? buyerId : sellerId,
+        });
+        navigate(`/message/${res.data.id}`);
+      }
+    }
+  };
   return (
     <div className="orders">
       {isLoading ? (
@@ -46,13 +64,18 @@ const Orders = () => {
           </div>
           <table>
             <tr>
+              <th>Seller</th>
+              <th>Buyer</th>
               <th>Image</th>
               <th>Title</th>
               <th>Price</th>
               <th>Contact</th>
+              <th>Mark as Complete</th>
             </tr>
             {data.map((order) => (
               <tr key={order._id}>
+                <td>{order.sellerId}</td>
+                <td>{order.buyerId}</td>
                 <td>
                   <img className="image" src={order.img} alt="" />
                 </td>
@@ -65,6 +88,16 @@ const Orders = () => {
                     alt=""
                     onClick={() => handleContact(order)}
                   />
+                </td>
+                <td>
+                  {currentUser.isSeller && (order.sellerId === currentUser._id) && (
+                  <img
+                    className="complete"
+                    src="./img/check.png"
+                    alt=""
+                    onClick={() => handleComplete(order)}
+                  />
+                  )}
                 </td>
               </tr>
             ))}
