@@ -42,7 +42,7 @@ function Gig() {
         <div className="container">
           <div className="left">
             <span className="breadcrumbs">
-              Fiverr {">"} Graphics & Design {">"}
+              mentorme {">"} opportunity
             </span>
             <h1>{data.title}</h1>
             {isLoadingUser ? (
@@ -74,7 +74,7 @@ function Gig() {
                 <img key={img} src={img} alt="" />
               ))}
             </Slider>
-            <h2>About This Gig</h2>
+            <h2>About This Opportunity</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (
               "loading"
@@ -82,7 +82,7 @@ function Gig() {
               "Something went wrong!"
             ) : (
               <div className="seller">
-                <h2>About The Seller</h2>
+                <h2>About The Mentor</h2>
                 <div className="user">
                   <img src={dataUser.img || "/img/noavatar.jpg"} alt="" />
                   <div className="info">
