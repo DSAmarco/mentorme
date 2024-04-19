@@ -5,6 +5,7 @@ import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
+import { resetInitialState } from "../../reducers/gigReducer";
 
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);
@@ -103,7 +104,7 @@ const Add = () => {
                   type="file"
                   multiple
                   onChange={(e) => {
-                    setSingleFile(e.target.files)
+                    setFiles(e.target.files)
                     setUploaded(false)
                     setUploading(false)
                   }}

@@ -22,11 +22,23 @@ const OrderSchema = new Schema({
         type: String,
         required: true,
     },
+    sellerUsername: {
+        type: String,
+        required: true,
+    },
     buyerId: {
         type: String,
         required: true,
     },
+    buyerUsername: {
+        type: String,
+        required: true,
+    },
     isCompleted: {
+        type: Boolean,
+        default: false,
+    },
+    isFinished: {
         type: Boolean,
         default: false,
     },

@@ -12,8 +12,11 @@ function Register() {
     password: "",
     img: "",
     country: "",
+    city: "",
     isSeller: false,
     desc: "",
+    totalStars: 0,
+    starNumber: 0,
   });
 
   const [errorMessage, setErrorMessage] = useState(""); // New state for error message
@@ -98,6 +101,13 @@ function Register() {
             name="phone"
             type="text"
             placeholder="+1 (XXX) XXX-XXXX"
+            onChange={handleChange}
+          />
+                    <label htmlFor="">City</label>
+          <input
+            name="city"
+            type="text"
+            placeholder="City"
             onChange={handleChange}
           />
           <label htmlFor="">Description</label>

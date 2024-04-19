@@ -7,6 +7,7 @@ export const createGig = async (req, res, next) => {
 
   const newGig = new Gig({
     userId: req.userId,
+    username: req.body.username,
     ...req.body,
   });
 

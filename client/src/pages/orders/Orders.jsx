@@ -33,6 +33,32 @@ const Orders = () => {
       }
     }
   };
+
+  const handleComplete = async (order) => {
+    const payment_intent = order.payment_intent;
+    try {
+      await newRequest.put("/orders?action=complete", { payment_intent });
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleRate = async (order, e) => {
+    try {
+      await newRequest.put("/auth/edit", {
+        originalUsername: order.buyerUsername,
+        username: order.buyerUsername,
+        totalStars: e,
+        starNumber: 1
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+
   return (
     <div className="orders">
       {isLoading ? (
@@ -45,14 +71,26 @@ const Orders = () => {
             <h1>Orders</h1>
           </div>
           <table>
-            <tr>
-              <th>Image</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Contact</th>
-            </tr>
             {data.map((order) => (
               <tr key={order._id}>
+                <th>Seller</th>
+                <th>Buyer</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Contact</th>
+                {currentUser.isSeller && (order.sellerId === currentUser._id) && (
+                  <th>Mark as Complete</th>
+                )}
+                {order.isFinished && (
+                  <th>Rate</th>
+                )}
+              </tr>
+            ))}
+            {data.map((order) => (
+              <tr key={order._id} className={order.isFinished ? 'highlighted' : ''}>
+                <td>{order.sellerUsername}</td>
+                <td>{order.buyerUsername}</td>
                 <td>
                   <img className="image" src={order.img} alt="" />
                 </td>
@@ -65,6 +103,33 @@ const Orders = () => {
                     alt=""
                     onClick={() => handleContact(order)}
                   />
+                </td>
+                {currentUser.isSeller && (order.sellerId === currentUser._id) && (
+                  <td>
+                    <img
+                      className="complete"
+                      src="./img/check.png"
+                      alt=""
+                      onClick={() => handleComplete(order)}
+                    />
+                  </td>
+                )}
+                <td>
+                  {currentUser.isSeller && (order.sellerId === currentUser._id) && order.isFinished ? (
+                    <select className="rate-dropdown" onChange={(e) => handleRate(order, e.target.value)}>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  ) :
+                    <Link to={`/gig/${order.gigId}`}>
+                      <img
+                        className="complete"
+                        src="./img/star.png"
+                        alt=""
+                      /></Link>}
                 </td>
               </tr>
             ))}

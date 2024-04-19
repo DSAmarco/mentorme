@@ -24,6 +24,7 @@ const Message = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries();
+      //window.location.reload();
     },
   });
 

@@ -24,6 +24,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    city: {
+        type: String,
+        required: true,
+    },
     phone: {
         type: String,
         required: false,
@@ -35,6 +39,14 @@ const userSchema = new Schema({
     isSeller: {
         type: Boolean,
         default: false,
+    },
+    totalStars: {
+        type: Number,
+        default: 0,
+    },
+    starNumber: {
+        type: Number,
+        default: 0,
     },
 }, {
     timestamps: true

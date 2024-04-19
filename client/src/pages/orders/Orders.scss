@@ -45,9 +45,16 @@
             width: 25px;
             cursor: pointer;
           }
+          .complete {
+            width: 25px;
+            cursor: pointer;
+          }
         }
         &:nth-child(even) {
           background-color: #1dbf730f;
+        }
+        &.highlighted {
+          background-color: #03fd1063; /* Yellow background color */
         }
       }
     }

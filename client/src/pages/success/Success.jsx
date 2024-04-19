@@ -11,7 +11,7 @@ const Success = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await newRequest.put("/orders", { payment_intent });
+        await newRequest.put("/orders?action=confirm", { payment_intent });
         setTimeout(() => {
           navigate("/orders");
         }, 5000);
