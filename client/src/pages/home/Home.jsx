@@ -105,43 +105,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="features dark">
-        <div className="container">
-          <div className="item">
-            <h1>
-              mentorme <i>business</i>
-            </h1>
-            <h1>
-              A business solution designed for <i>teams</i>
-            </h1>
-            <p>
-              Upgrade to a curated experience packed with tools and benefits,
-              dedicated to businesses
-            </p>
-            <div className="title">
-              <img src="./img/check.png" alt="" />
-              Connect to freelancers with proven business experience
-            </div>
-
-            <div className="title">
-              <img src="./img/check.png" alt="" />
-              Get matched with the perfect talent by a customer success manager
-            </div>
-
-            <div className="title">
-              <img src="./img/check.png" alt="" />
-              Manage teamwork and boost productivity with one powerful workspace
-            </div>
-            <button>Explore mentorme Business</button>
-          </div>
-          <div className="item">
-            <img
-              src="./img/bestduo.png"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
+      
       {/*<Slide slidesToShow={4} arrowsScroll={4}>
         {projects.map((card) => (
           <ProjectCard key={card.id} card={card} />
