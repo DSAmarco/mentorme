@@ -1,5 +1,6 @@
 export const INITIAL_STATE = {
     userId: JSON.parse(localStorage.getItem("currentUser"))?._id,
+    username: JSON.parse(localStorage.getItem("currentUser"))?.username,
     title: "",
     cat: "",
     cover: "",
@@ -11,6 +12,24 @@ export const INITIAL_STATE = {
     revisionNumber: 0,
     features: [],
     price: 0,
+  };
+
+  export const resetInitialState = () => {
+    return {
+      userId: JSON.parse(localStorage.getItem("currentUser"))?._id,
+      username: JSON.parse(localStorage.getItem("currentUser"))?.username,
+      title: "",
+      cat: "",
+      cover: "",
+      images: [],
+      desc: "",
+      shortTitle: "",
+      shortDesc: "",
+      deliveryTime: 0,
+      revisionNumber: 0,
+      features: [],
+      price: 0,
+    };
   };
   
   export const gigReducer = (state, action) => {

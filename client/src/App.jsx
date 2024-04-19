@@ -14,6 +14,7 @@ import Messages from "./pages/messages/Messages";
 import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
 import Edit from "./pages/edit/Edit";
+import Rate from "./pages/rate/Rate";
 import {
   QueryClient,
   QueryClientProvider,
@@ -90,6 +91,10 @@ function App() {
         {
           path: "/edit",
           element: <Edit />,
+        },
+        {
+          path: "/rate",
+          element: <Rate />,
         },
       ],
     },

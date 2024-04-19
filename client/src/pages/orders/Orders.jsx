@@ -35,22 +35,30 @@ const Orders = () => {
   };
 
   const handleComplete = async (order) => {
-    const sellerId = order.sellerId;
-    const buyerId = order.buyerId;
-    const id = sellerId + buyerId;
-
+    const payment_intent = order.payment_intent;
     try {
-      const res = await newRequest.get(`/conversations/single/${id}`);
-      navigate(`/message/${res.data.id}`);
+      await newRequest.put("/orders?action=complete", { payment_intent });
+      window.location.reload();
     } catch (err) {
-      if (err.response.status === 404) {
-        const res = await newRequest.post(`/conversations/`, {
-          to: currentUser.seller ? buyerId : sellerId,
-        });
-        navigate(`/message/${res.data.id}`);
-      }
+      console.log(err);
     }
   };
+
+  const handleRate = async (order, e) => {
+    try {
+      await newRequest.put("/auth/edit", {
+        originalUsername: order.buyerUsername,
+        username: order.buyerUsername,
+        totalStars: e,
+        starNumber: 1
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+
   return (
     <div className="orders">
       {isLoading ? (
@@ -63,19 +71,26 @@ const Orders = () => {
             <h1>Orders</h1>
           </div>
           <table>
-            <tr>
-              <th>Seller</th>
-              <th>Buyer</th>
-              <th>Image</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Contact</th>
-              <th>Mark as Complete</th>
-            </tr>
             {data.map((order) => (
               <tr key={order._id}>
-                <td>{order.sellerId}</td>
-                <td>{order.buyerId}</td>
+                <th>Seller</th>
+                <th>Buyer</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Contact</th>
+                {currentUser.isSeller && (order.sellerId === currentUser._id) && (
+                  <th>Mark as Complete</th>
+                )}
+                {order.isFinished && (
+                  <th>Rate</th>
+                )}
+              </tr>
+            ))}
+            {data.map((order) => (
+              <tr key={order._id} className={order.isFinished ? 'highlighted' : ''}>
+                <td>{order.sellerUsername}</td>
+                <td>{order.buyerUsername}</td>
                 <td>
                   <img className="image" src={order.img} alt="" />
                 </td>
@@ -89,15 +104,32 @@ const Orders = () => {
                     onClick={() => handleContact(order)}
                   />
                 </td>
+                {currentUser.isSeller && (order.sellerId === currentUser._id) && (
+                  <td>
+                    <img
+                      className="complete"
+                      src="./img/check.png"
+                      alt=""
+                      onClick={() => handleComplete(order)}
+                    />
+                  </td>
+                )}
                 <td>
-                  {currentUser.isSeller && (order.sellerId === currentUser._id) && (
-                  <img
-                    className="complete"
-                    src="./img/check.png"
-                    alt=""
-                    onClick={() => handleComplete(order)}
-                  />
-                  )}
+                  {currentUser.isSeller && (order.sellerId === currentUser._id) && order.isFinished ? (
+                    <select className="rate-dropdown" onChange={(e) => handleRate(order, e.target.value)}>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  ) :
+                    <Link to={`/gig/${order.gigId}`}>
+                      <img
+                        className="complete"
+                        src="./img/star.png"
+                        alt=""
+                      /></Link>}
                 </td>
               </tr>
             ))}

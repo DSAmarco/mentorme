@@ -53,6 +53,9 @@
         &:nth-child(even) {
           background-color: #1dbf730f;
         }
+        &.highlighted {
+          background-color: #03fd1063; /* Yellow background color */
+        }
       }
     }
   }

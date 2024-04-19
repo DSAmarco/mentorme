@@ -1,4 +1,5 @@
 import createError from "../utils/createError.js";
+import User from "../models/user.model.js";
 import Order from "../models/order.model.js";
 import Gig from "../models/gig.model.js";
 import Stripe from "stripe";
@@ -6,6 +7,8 @@ export const intent = async (req, res, next) => {
   const stripe = new Stripe(process.env.STRIPE);
 
   const gig = await Gig.findById(req.params.id);
+  const user = await User.findById(req.userId);
+
 
   const paymentIntent = await stripe.paymentIntents.create({
     amount: gig.price * 100,
@@ -20,7 +23,9 @@ export const intent = async (req, res, next) => {
     img: gig.cover,
     title: gig.title,
     buyerId: req.userId,
+    buyerUsername: user.username,
     sellerId: gig.userId,
+    sellerUsername: gig.username,
     price: gig.price,
     payment_intent: paymentIntent.id,
   });
@@ -46,15 +51,15 @@ export const getOrders = async (req, res, next) => {
 };
 export const completeOrder = async (req, res, next) => {
   try {
-    const order = await Order.findById(req.params.id);
-    const gig = await Gig.findById(req.params.id);
-    if (order.sellerId !== req.userId)
-      return next(createError(403, "You can delete only your gig!"));
+    const order = await Order.findOne({ payment_intent: req.body.payment_intent });
 
-    await gig.save();
+    if (order) {
+      order.isFinished = !order.isFinished; // Toggle the value
+      await order.save();
+    }
 
-  }
-  catch (err) {
+    res.status(200).send("Order has been completed.");
+  } catch (err) {
     next(err);
   }
 };

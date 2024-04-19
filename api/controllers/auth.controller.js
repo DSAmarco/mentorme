@@ -29,11 +29,20 @@ export const edit = async (req, res, next) => {
     if (req.body.country) {
       user.country = req.body.country;
     }
+    if (req.body.city) {
+      user.city = req.body.city;
+    }
     if (req.body.isSeller) {
       user.isSeller = req.body.isSeller;
     }
     if (req.body.desc) {
       user.desc = req.body.desc;
+    }
+    if (req.body.totalStars){
+      user.totalStars += req.body.totalStars
+    }
+    if (req.body.starNumber){
+      user.starNumber += req.body.starNumber
     }
     // Save the updated user
     await user.save();
