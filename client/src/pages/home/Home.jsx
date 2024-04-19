@@ -10,15 +10,21 @@ import { Link } from 'react-router-dom';
 
 
 function Home() {
+
+
   return (
     <div className="home">
       <Featured />
       <TrustedBy />
       <Slide slidesToShow={4} arrowsScroll={2}>
         {cards.map((card) => (
-          <CatCard key={card.id} card={card} />
+          <CatCard key={card.id} card={card}  category={card.title}/>
         ))}
+      
+
       </Slide>
+
+     
       <div className="explore">
         <div className="container">
           <h1>Explore the marketplace</h1>
@@ -72,11 +78,6 @@ function Home() {
         </div>
       </div>
       
-      {/*<Slide slidesToShow={4} arrowsScroll={4}>
-        {projects.map((card) => (
-          <ProjectCard key={card.id} card={card} />
-        ))}
-      </Slide>*/}
     </div>
   );
 }
