@@ -30,7 +30,7 @@ function Home() {
           <h1>Explore the marketplace</h1>
           <div className="items">
             <div className="item">
-            <Link to="/gigs?cat=design">
+            <Link to="/gigs?cat=city">
               <img
                 src="/public/img/city.png"
                 alt=""
@@ -41,7 +41,7 @@ function Home() {
               <span>City</span>
             </div>
             <div className="item">
-            <Link to="/gigs?cat=design">
+            <Link to="/gigs?cat=culture">
               <img
                 src="/public/img/culture.png"
                 alt=""
@@ -52,7 +52,7 @@ function Home() {
               <span>Culture</span>
             </div>
             <div className="item">
-            <Link to="/gigs?cat=design">
+            <Link to="/gigs?cat=food">
               <img
                 src="/public/img/food.png"
                 alt=""
@@ -62,7 +62,7 @@ function Home() {
               <span>Food</span>
             </div>
             <div className="item">
-            <Link to="/gigs?cat=design">
+            <Link to="/gigs?cat=activity">
               <img
                 src="/public/img/activity.png"
                 alt=""

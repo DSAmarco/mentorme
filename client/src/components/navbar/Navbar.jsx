@@ -91,16 +91,16 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/gigs?cat=design">
+            <Link className="link menuLink" to="/gigs?cat=city">
               City
             </Link>
-            <Link className="link menuLink" to="/gigs?cat=design">
+            <Link className="link menuLink" to="/gigs?cat=culture">
               Culture
             </Link>
-            <Link className="link menuLink" to="/gigs?cat=design">
+            <Link className="link menuLink" to="/gigs?cat=food">
               Food
             </Link>
-            <Link className="link menuLink" to="/gigs?cat=design">
+            <Link className="link menuLink" to="/gigs?cat=activity">
               Activity
             </Link>
             
