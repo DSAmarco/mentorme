@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import "./CatCard.scss";
 
 function CatCard({ card }) {
+  const category = card.title.toLowerCase(); // Convert title to lowercase
 
-  const category = card.title
-  
   return (
     <Link to={`/gigs?cat=${category}`}>
       <div className="catCard">
