@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const OrderSchema = new Schema({
     gigId: {
         type: String,
-        required: true,
+        required: false,
     },
     img: {
         type: String,
@@ -12,27 +12,27 @@ const OrderSchema = new Schema({
     },
     title: {
         type: String,
-        required: true,
+        required: false,
     },
     price: {
         type: Number,
-        required: true,
+        required: false,
     },
     sellerId: {
         type: String,
-        required: true,
+        required: false,
     },
     sellerUsername: {
         type: String,
-        required: true,
+        required: false,
     },
     buyerId: {
         type: String,
-        required: true,
+        required: false,
     },
     buyerUsername: {
         type: String,
-        required: true,
+        required: false,
     },
     isCompleted: {
         type: Boolean,
@@ -44,10 +44,10 @@ const OrderSchema = new Schema({
     },
     payment_intent: {
         type: String,
-        required: true,
+        required: false,
     },
 }, {
-    timestamps: true
+    timestamps: false
 });
 
 export default mongoose.model("Order", OrderSchema)

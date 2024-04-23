@@ -152,7 +152,6 @@ function Gigs() {
             <span>Budget</span>
             <input ref={minRef} type="number" placeholder="min" />
             <input ref={maxRef} type="number" placeholder="max" />
-            <input ref={searchRef} type="string" placeholder="test" />
             <button onClick={apply}>Apply</button>
           </div>
           <div className="left">

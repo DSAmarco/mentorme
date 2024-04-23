@@ -4,18 +4,18 @@ const { Schema } = mongoose;
 const MessageSchema = new Schema({
     conversationId: {
         type: String,
-        required: true,
+        required: false,
     },
     userId: {
         type: String,
-        required: true,
+        required: false,
     },
     desc: {
         type: String,
-        required: true,
+        required: false,
     },
 }, {
-    timestamps: true
+    timestamps: false
 });
 
 export default mongoose.model("Message", MessageSchema)
