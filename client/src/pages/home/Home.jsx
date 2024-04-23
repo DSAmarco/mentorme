@@ -32,7 +32,7 @@ function Home() {
             <div className="item">
             <Link to="/gigs?cat=city">
               <img
-                src="/public/img/city.png"
+                src="img/city.png"
                 alt=""
               />
               </Link>
@@ -43,7 +43,7 @@ function Home() {
             <div className="item">
             <Link to="/gigs?cat=culture">
               <img
-                src="/public/img/culture.png"
+                src="img/culture.png"
                 alt=""
               />
                </Link>
@@ -54,7 +54,7 @@ function Home() {
             <div className="item">
             <Link to="/gigs?cat=food">
               <img
-                src="/public/img/food.png"
+                src="img/food.png"
                 alt=""
               />
               </Link>
@@ -64,7 +64,7 @@ function Home() {
             <div className="item">
             <Link to="/gigs?cat=activity">
               <img
-                src="/public/img/activity.png"
+                src="img/activity.png"
                 alt=""
               />
               </Link>

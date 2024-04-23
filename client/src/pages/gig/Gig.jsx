@@ -102,32 +102,6 @@ function Gig() {
                     <button>Contact Me</button>
                   </div>
                 </div>
-                <div className="box">
-                  <div className="items">
-                    <div className="item">
-                      <span className="title">From</span>
-                      <span className="desc">{dataUser.country}</span>
-                    </div>
-                    <div className="item">
-                      <span className="title">Member since</span>
-                      <span className="desc">Aug 2022</span>
-                    </div>
-                    <div className="item">
-                      <span className="title">Avg. response time</span>
-                      <span className="desc">4 hours</span>
-                    </div>
-                    <div className="item">
-                      <span className="title">Last delivery</span>
-                      <span className="desc">1 day</span>
-                    </div>
-                    <div className="item">
-                      <span className="title">Languages</span>
-                      <span className="desc">English</span>
-                    </div>
-                  </div>
-                  <hr />
-                  <p>{dataUser.desc}</p>
-                </div>
               </div>
             )}
             <Reviews gigId={id} />
@@ -139,14 +113,6 @@ function Gig() {
             </div>
             <p>{data.shortDesc}</p>
             <div className="details">
-              <div className="item">
-                <img src="/img/clock.png" alt="" />
-                <span>{data.deliveryDate} Days Delivery</span>
-              </div>
-              <div className="item">
-                <img src="/img/recycle.png" alt="" />
-                <span>{data.revisionNumber} Revisions</span>
-              </div>
             </div>
             <div className="features">
               {data.features.map((feature) => (

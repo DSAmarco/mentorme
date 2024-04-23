@@ -81,6 +81,13 @@ const Add = () => {
               placeholder="e.g. I will do something I'm really good at"
               onChange={handleChange}
             />
+            <label htmlFor="">City</label>
+            <input
+              type="text"
+              name="city"
+              placeholder="e.g. Orlando"
+              onChange={handleChange}
+            />
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
               <option value="city">City</option>
@@ -142,6 +149,7 @@ const Add = () => {
               cols="30"
               rows="10"
             ></textarea>
+            
             <label htmlFor="">Delivery Time (e.g. 3 days)</label>
             <input type="number" name="deliveryTime" onChange={handleChange} />
             <label htmlFor="">Revision Number</label>
@@ -150,6 +158,7 @@ const Add = () => {
               name="revisionNumber"
               onChange={handleChange}
             />
+          
             <label htmlFor="">Add Features</label>
             <form action="" className="add" onSubmit={handleFeature}>
               <input type="text" placeholder="e.g. page design" />
