@@ -17,8 +17,12 @@ function Edit() {
     country: "",
     city: "",
     isSeller: false,
+    phone: "",
+    city: "",
     desc: "",
   });
+  const [mentorStatus, setMentorStatus] = useState(null);
+
 
   const [errorMessage, setErrorMessage] = useState(""); // New state for error message
   const navigate = useNavigate();
@@ -36,15 +40,27 @@ function Edit() {
           img: currentUser.img,
           country: currentUser.country,
           isSeller: currentUser.isSeller,
+          phone: currentUser.phone,
+          city: currentUser.city,
           desc: currentUser.desc
         };
         setUser(userData);
+        setMentorStatus(userData.isSeller);
       } catch (err) {
         console.log(err);
       }
     };
     fetchUserData();
   }, []);
+
+  console.log("test: " + user.isSeller);
+
+  const formatPhoneNumber = (phoneNumber) => {
+    if (!phoneNumber) return ''; // Return empty string if phone number is not provided
+    const formattedPhoneNumber = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
+    return formattedPhoneNumber;
+  };
+  
 
   const handleChange = (e) => {
     setUser((prev) => {
@@ -56,6 +72,7 @@ function Edit() {
     setUser((prev) => {
       return { ...prev, isSeller: e.target.checked };
     });
+    setMentorStatus((prevStatus) => !prevStatus);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -119,33 +136,38 @@ function Edit() {
           <div className="toggle">
             <label htmlFor="">Activate the Mentor account</label>
             <label className="switch">
-              <input type="checkbox" onChange={handleSeller} />
+              <input type="checkbox" onChange={handleSeller} checked={mentorStatus}/>
               <span className="slider round"></span>
             </label>
           </div>
-          <label htmlFor="">Phone Number</label>
-          <input
-            name="phone"
-            type="text"
-            placeholder="+1 (XXX) XXX-XXXX"
-            onChange={handleChange}
-          />
-          <label htmlFor="">City</label>
-          <input
-            name="phone"
-            type="text"
-            placeholder="City"
-            onChange={handleChange}
-          />
-          <label htmlFor="">Description</label>
-          <textarea
-            placeholder="A short description of yourself"
-            name="desc"
-            id=""
-            cols="30"
-            rows="10"
-            onChange={handleChange}
-          ></textarea>
+          {mentorStatus && (
+            <>
+              <label htmlFor="">Phone Number</label>
+              <input
+                name="phone"
+                type="text"
+                placeholder= {formatPhoneNumber(user.phone) || "+1 (XXX) XXX-XXXX"}
+                onChange={handleChange}
+              />
+              <label htmlFor="">City</label>
+              <input
+                name="city"
+                type="text"
+                placeholder="City"
+                value={user.city || ''}
+                onChange={handleChange}
+              />
+              <label htmlFor="">Description</label>
+              <textarea
+                placeholder="A short description of yourself"
+                name="desc"
+                id=""
+                cols="30"
+                rows="10"
+                onChange={handleChange}
+              ></textarea>
+            </>
+          )}
         </div>
       </form>
     </div>

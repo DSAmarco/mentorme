@@ -34,6 +34,11 @@ function Navbar() {
     }
   };
 
+  const handleLinkClick = () => {
+    setTimeout(() => {
+      window.location.reload(); // Reload the window after a delay
+    }, 1); // Delay in milliseconds (e.g., 1000 milliseconds = 1 second)
+  };
   return (
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
       <div className="container">
@@ -53,10 +58,10 @@ function Navbar() {
                   {currentUser.isSeller && (
                     <>
                       <Link className="link" to="/mygigs">
-                        Gigs
+                        Mentorships
                       </Link>
                       <Link className="link" to="/add">
-                        Add New Gig
+                        Add New Mentorship
                       </Link>
                     </>
                   )}
@@ -89,19 +94,19 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/gigs?cat=city">
+            <Link className="link menuLink" to="/gigs?cat=city" onClick={handleLinkClick}>
               City
             </Link>
-            <Link className="link menuLink" to="/gigs?cat=culture">
+            <Link className="link menuLink" to="/gigs?cat=culture" onClick={handleLinkClick}>
               Culture
             </Link>
-            <Link className="link menuLink" to="/gigs?cat=food">
+            <Link className="link menuLink" to="/gigs?cat=food" onClick={handleLinkClick}>
               Food
             </Link>
-            <Link className="link menuLink" to="/gigs?cat=activity">
+            <Link className="link menuLink" to="/gigs?cat=activity" onClick={handleLinkClick}>
               Activity
             </Link>
-            
+
           </div>
           <hr />
         </>

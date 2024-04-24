@@ -40,10 +40,10 @@ function MyGigs() {
       ) : (
         <div className="container">
           <div className="title">
-            <h1>Gigs</h1>
+            <h1>Mentorships</h1>
             {currentUser.isSeller && (
               <Link to="/add">
-                <button>Add New Gig</button>
+                <button>Add New Mentorship</button>
               </Link>
             )}
           </div>

@@ -69,6 +69,32 @@
 
       }
 
+      .applyButton{
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        color: #555;
+        font-weight: 300;
+        margin-right: 400px;
+
+        button{
+          padding: 5px 10px;
+          background-color: #1dbf73;
+          color: white;
+          border: none;
+          font-weight: 500;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .button-active {
+          background-color: 1dbf73;
+        }
+        
+        .button-inactive {
+          background-color: gray;
+        }
+      }
+
       .right {
         position: relative;
         display: flex;
@@ -112,7 +138,7 @@
 
     .cards {
       display: flex;
-      // justify-content: space-between;
+      gap:30px;
       flex-wrap: wrap;
     }
   }
