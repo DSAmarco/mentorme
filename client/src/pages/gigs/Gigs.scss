@@ -59,6 +59,14 @@
           cursor: pointer;
         }
 
+        .button-active {
+          background-color: 1dbf73;
+        }
+        
+        .button-inactive {
+          background-color: gray;
+        }
+
       }
 
       .right {

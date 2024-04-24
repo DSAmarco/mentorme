@@ -15,7 +15,7 @@ function Home() {
   return (
     <div className="home">
       <Featured />
-      <TrustedBy />
+      {/* <TrustedBy /> */}
       <Slide slidesToShow={4} arrowsScroll={2}>
         {cards.map((card) => (
           <CatCard key={card.id} card={card}  category={card.title}/>

@@ -85,9 +85,8 @@ function Gigs() {
     switch (city) {
       case 'City':
         setSearch(!cityActive ? "?cat=city" : '');
-        if (!cityActive)
-        {
-          if(search.includes("search"))
+        if (!cityActive) {
+          if (search.includes("search"))
             navigate(`/gigs${firstParam}&cat=city`)
           else
             navigate("/gigs?cat=city");
@@ -95,9 +94,8 @@ function Gigs() {
         break;
       case 'Culture':
         setSearch(!cultureActive ? '?cat=culture' : '');
-        if (!cultureActive)
-        {
-          if(search.includes("search"))
+        if (!cultureActive) {
+          if (search.includes("search"))
             navigate(`/gigs${firstParam}&cat=culture`)
           else
             navigate("/gigs?cat=culture");
@@ -106,7 +104,7 @@ function Gigs() {
       case 'Food':
         setSearch(!foodActive ? '?cat=food' : '');
         {
-          if(search.includes("search"))
+          if (search.includes("search"))
             navigate(`/gigs${firstParam}&cat=food`)
           else
             navigate("/gigs?cat=food");
@@ -115,7 +113,7 @@ function Gigs() {
       case 'Activity':
         setSearch(!activityActive ? '?cat=activity' : '');
         {
-          if(search.includes("search"))
+          if (search.includes("search"))
             navigate(`/gigs${firstParam}&cat=activity`)
           else
             navigate("/gigs?cat=activity");
@@ -155,17 +153,25 @@ function Gigs() {
             <button onClick={apply}>Apply</button>
           </div>
           <div className="left">
-            <button onClick={() => handleToggle('City')}>
-              {cityActive ? 'Disable City' : 'Enable City'}
+            <button
+              className={cityActive ? 'button-active' : 'button-inactive'}
+              onClick={() => handleToggle('City')}>
+              City
             </button>
-            <button onClick={() => handleToggle('Culture')}>
-              {cultureActive ? 'Disable Culture' : 'Enable Culture'}
+            <button
+              className={cultureActive ? 'button-active' : 'button-inactive'}
+              onClick={() => handleToggle('Culture')}>
+              Culture
             </button>
-            <button onClick={() => handleToggle('Food')}>
-              {foodActive ? 'Disable Food' : 'Enable Food'}
+            <button
+              className={foodActive ? 'button-active' : 'button-inactive'}
+              onClick={() => handleToggle('Food')}>
+              Food
             </button>
-            <button onClick={() => handleToggle('Activity')}>
-              {activityActive ? 'Disable Activity' : 'Enable Activity'}
+            <button
+              className={activityActive ? 'button-active' : 'button-inactive'}
+              onClick={() => handleToggle('Activity')}>
+              Activity
             </button>
           </div>
           <div className="right">

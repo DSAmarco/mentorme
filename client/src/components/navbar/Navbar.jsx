@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
-import { resetInitialState } from "../../reducers/gigReducer";
 import "./Navbar.scss";
 
 function Navbar() {
@@ -28,7 +27,6 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await newRequest.post("/auth/logout");
-      resetInitialState();
       localStorage.setItem("currentUser", null);
       navigate("/");
     } catch (err) {

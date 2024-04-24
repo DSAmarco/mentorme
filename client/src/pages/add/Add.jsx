@@ -5,7 +5,6 @@ import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
-import { resetInitialState } from "../../reducers/gigReducer";
 
 const Add = () => {
   const [singleFile, setSingleFile] = useState(undefined);
@@ -78,7 +77,7 @@ const Add = () => {
             <input
               type="text"
               name="title"
-              placeholder="e.g. I will do something I'm really good at"
+              placeholder="e.g. Professional Food Connoisseur"
               onChange={handleChange}
             />
             <label htmlFor="">City</label>
@@ -125,7 +124,7 @@ const Add = () => {
             <textarea
               name="desc"
               id=""
-              placeholder="Brief descriptions to introduce your service to customers"
+              placeholder="Brief list of services you will provide"
               cols="0"
               rows="16"
               onChange={handleChange}
@@ -137,9 +136,10 @@ const Add = () => {
             <input
               type="text"
               name="shortTitle"
-              placeholder="e.g. One-page web design"
+              placeholder="e.g. Personalized Food Recommendations"
               onChange={handleChange}
             />
+            
             <label htmlFor="">Short Description</label>
             <textarea
               name="shortDesc"
@@ -149,15 +149,15 @@ const Add = () => {
               cols="30"
               rows="10"
             ></textarea>
-            
-            <label htmlFor="">Delivery Time (e.g. 3 days)</label>
+            <label htmlFor="">Meeting Time Guarantee (e.g. Within 3 days)</label>
             <input type="number" name="deliveryTime" onChange={handleChange} />
+            {/*
             <label htmlFor="">Revision Number</label>
             <input
               type="number"
               name="revisionNumber"
               onChange={handleChange}
-            />
+                />*/}
           
             <label htmlFor="">Add Features</label>
             <form action="" className="add" onSubmit={handleFeature}>

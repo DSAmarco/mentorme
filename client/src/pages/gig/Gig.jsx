@@ -75,7 +75,7 @@ function Gig() {
               ))}
             </Slider>
             <h2>About This Opportunity</h2>
-            <p>{data.desc}</p>
+            <pre>{data.desc}</pre>
             {isLoadingUser ? (
               "loading"
             ) : errorUser ? (

@@ -1,9 +1,13 @@
 .gigCard {
   width: 324px;
-  height: 400px;
+  height: fit-content;
   // border: 1px solid rgb(237, 236, 236);
   border: 1px solid rgb(228, 228, 228);
   margin-bottom: 40px;
+
+  pre {
+    white-space: pre-wrap;
+  }
 
   img {
     width: 100%;
@@ -30,7 +34,19 @@
       }
 
       span {
+        
       }
+    }
+
+    .title{
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .cat{
+      text-transform: capitalize;
+      font-size: 12px;
+      margin-left: auto
     }
 
     p {
