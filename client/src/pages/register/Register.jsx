@@ -20,7 +20,10 @@ function Register() {
   });
 
   const [errorMessage, setErrorMessage] = useState(""); // New state for error message
+  const [mentorStatus, setMentorStatus] = useState(false);
   const navigate = useNavigate();
+
+  console.log(mentorStatus);
 
   const handleChange = (e) => {
     setUser((prev) => {
@@ -32,6 +35,7 @@ function Register() {
     setUser((prev) => {
       return { ...prev, isSeller: e.target.checked };
     });
+    setMentorStatus((prevStatus) => !prevStatus);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,29 +100,33 @@ function Register() {
               <span className="slider round"></span>
             </label>
           </div>
-          <label htmlFor="">Phone Number</label>
-          <input
-            name="phone"
-            type="text"
-            placeholder="+1 (XXX) XXX-XXXX"
-            onChange={handleChange}
-          />
-          <label htmlFor="">City</label>
-          <input
-            name="city"
-            type="text"
-            placeholder="City"
-            onChange={handleChange}
-          />
-          <label htmlFor="">Description</label>
-          <textarea
-            placeholder="A short description of yourself"
-            name="desc"
-            id=""
-            cols="30"
-            rows="10"
-            onChange={handleChange}
-          ></textarea>
+          {mentorStatus && (
+            <>
+              <label htmlFor="">Phone Number</label>
+              <input
+                name="phone"
+                type="text"
+                placeholder="+1 (XXX) XXX-XXXX"
+                onChange={handleChange}
+              />
+              <label htmlFor="">City</label>
+              <input
+                name="city"
+                type="text"
+                placeholder="City"
+                onChange={handleChange}
+              />
+              <label htmlFor="">Description</label>
+              <textarea
+                placeholder="A short description of yourself"
+                name="desc"
+                id=""
+                cols="30"
+                rows="10"
+                onChange={handleChange}
+              ></textarea>
+            </>
+          )}
         </div>
       </form>
     </div>

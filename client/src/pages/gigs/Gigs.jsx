@@ -21,6 +21,8 @@ function Gigs() {
   const [cultureActive, setCultureActive] = useState(false);
   const [foodActive, setFoodActive] = useState(false);
   const [activityActive, setActivityActive] = useState(false);
+  const [applyUpdate, setApplyUpdate] = useState(false);
+
 
   const [searchUpdate, setSearch] = useState('');
 
@@ -81,6 +83,7 @@ function Gigs() {
     setCultureActive(city === 'Culture' ? !cultureActive : false);
     setFoodActive(city === 'Food' ? !foodActive : false);
     setActivityActive(city === 'Activity' ? !activityActive : false);
+    setApplyUpdate(true);
 
     switch (city) {
       case 'City':
@@ -134,7 +137,12 @@ function Gigs() {
   }, [sort]);
 
   const apply = () => {
+    setApplyUpdate(false)
     refetch();
+  };
+
+  const handleChange = () => {
+    setApplyUpdate(true);
   };
 
   return (
@@ -148,11 +156,8 @@ function Gigs() {
         <div className="menu">
           <div className="left">
             <span>Budget</span>
-            <input ref={minRef} type="number" placeholder="min" />
-            <input ref={maxRef} type="number" placeholder="max" />
-            <button onClick={apply}>Apply</button>
-          </div>
-          <div className="left">
+            <input ref={minRef} type="number" placeholder="min" onChange={handleChange} />
+            <input ref={maxRef} type="number" placeholder="max" onChange={handleChange} />
             <button
               className={cityActive ? 'button-active' : 'button-inactive'}
               onClick={() => handleToggle('City')}>
@@ -173,6 +178,11 @@ function Gigs() {
               onClick={() => handleToggle('Activity')}>
               Activity
             </button>
+          </div>
+          <div className="applyButton">
+            <button
+              className={applyUpdate ? 'button-active' : 'button-inactive'}
+              onClick={apply}>Apply</button>
           </div>
           <div className="right">
             <span className="sortBy">Sort by</span>

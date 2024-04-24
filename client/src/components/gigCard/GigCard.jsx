@@ -36,7 +36,7 @@ const GigCard = ({ item }) => {
             <img src="./img/star.png" alt="" />
             <span>
               {item.starNumber !== 0 ?
-                Math.round(item.totalStars / item.starNumber) :
+                item.totalStars / item.starNumber :
                 "No Rating"}
             </span>
           </div>

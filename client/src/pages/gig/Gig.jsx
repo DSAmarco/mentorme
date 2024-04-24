@@ -89,13 +89,13 @@ function Gig() {
                     <span>{dataUser.username}</span>
                     {!isNaN(data.totalStars / data.starNumber) && (
                       <div className="stars">
-                        {Array(Math.round(data.totalStars / data.starNumber))
+                        {Array(Math.floor(data.totalStars / data.starNumber))
                           .fill()
                           .map((item, i) => (
                             <img src="/img/star.png" alt="" key={i} />
                           ))}
                         <span>
-                          {Math.round(data.totalStars / data.starNumber)}
+                          {data.totalStars / data.starNumber}
                         </span>
                       </div>
                     )}
