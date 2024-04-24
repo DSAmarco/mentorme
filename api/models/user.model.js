@@ -4,17 +4,17 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true,
-        unique: true,
+        required: false,
+        unique: false,
     },
     email: {
         type: String,
-        required: true,
-        unique: true,
+        required: false,
+        unique: false,
     },
     password: {
         type: String,
-        required: true,
+        required: false,
     },
     img: {
         type: String,
@@ -22,11 +22,11 @@ const userSchema = new Schema({
     },
     country: {
         type: String,
-        required: true,
+        required: false,
     },
     city: {
         type: String,
-        required: true,
+        required: false,
     },
     phone: {
         type: String,
@@ -49,7 +49,7 @@ const userSchema = new Schema({
         default: 0,
     },
 }, {
-    timestamps: true
+    timestamps: false
 });
 
 export default mongoose.model("User", userSchema)

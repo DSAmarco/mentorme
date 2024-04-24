@@ -42,15 +42,34 @@ export const getGigs = async (req, res, next) => {
   const q = req.query;
   const filters = {
     ...(q.userId && { userId: q.userId }),
-    ...(q.cat && { cat: q.cat }),
     ...((q.min || q.max) && {
       price: {
         ...(q.min && { $gt: q.min }),
         ...(q.max && { $lt: q.max }),
       },
     }),
-    ...(q.search && { title: { $regex: q.search, $options: "i" } }),
   };
+  if (q.cat && q.search) {
+    filters.$and = [
+      { cat: q.cat },
+      {
+        $or: [
+          { city: { $regex: q.search, $options: "i" } },
+          { title: { $regex: q.search, $options: "i" } }
+        ]
+      }
+    ];
+  } else {
+    if (q.cat) {
+      filters.cat = q.cat;
+    }
+    if (q.search) {
+      filters.$or = [
+        { city: { $regex: q.search, $options: "i" } },
+        { title: { $regex: q.search, $options: "i" } }
+      ];
+    }
+  }
   try {
     const gigs = await Gig.find(filters).sort({ [q.sort]: -1 });
     res.status(200).send(gigs);

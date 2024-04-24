@@ -25,20 +25,26 @@ const GigCard = ({ item }) => {
             <div className="user">
               <img src={data.img || "/img/noavatar.jpg"} alt="" />
               <span>{data.username}</span>
+              <span className="cat">{item.cat}</span>
             </div>
           )}
-          <p>{item.desc}</p>
+          <div className="title">
+            <span>{item.title}</span>
+          </div>
+          <pre>{item.desc}</pre>
           <div className="star">
             <img src="./img/star.png" alt="" />
             <span>
-              {!isNaN(item.totalStars / item.starNumber) &&
-                Math.round(item.totalStars / item.starNumber)}
+              {item.starNumber !== 0 ?
+                Math.round(item.totalStars / item.starNumber) :
+                "No Rating"}
             </span>
           </div>
         </div>
         <hr />
         <div className="detail">
           <img src="./img/heart.png" alt="" />
+          <p>{`City: ${item.city}`}</p>
           <div className="price">
             <span>STARTING AT</span>
             <h2>$ {item.price}</h2>

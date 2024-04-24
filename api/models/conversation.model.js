@@ -5,24 +5,24 @@ const ConversationSchema = new Schema(
     {
         id: {
             type: String,
-            required: true,
-            unique: true,
+            required: false,
+            unique: false,
         },
         sellerId: {
             type: String,
-            required: true,
+            required: false,
         },
         buyerId: {
             type: String,
-            required: true,
+            required: false,
         },
         readBySeller: {
             type: Boolean,
-            required: true,
+            required: false,
         },
         readByBuyer: {
             type: Boolean,
-            required: true,
+            required: false,
         },
         lastMessage: {
             type: String,
@@ -30,7 +30,7 @@ const ConversationSchema = new Schema(
         },
     },
     {
-        timestamps: true,
+        timestamps: false,
     }
 );
 

@@ -15,6 +15,7 @@ function Edit() {
     password: "",
     img: "",
     country: "",
+    city: "",
     isSeller: false,
     desc: "",
   });
@@ -127,6 +128,13 @@ function Edit() {
             name="phone"
             type="text"
             placeholder="+1 (XXX) XXX-XXXX"
+            onChange={handleChange}
+          />
+          <label htmlFor="">City</label>
+          <input
+            name="phone"
+            type="text"
+            placeholder="City"
             onChange={handleChange}
           />
           <label htmlFor="">Description</label>

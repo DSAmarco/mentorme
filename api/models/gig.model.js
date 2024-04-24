@@ -5,19 +5,23 @@ const GigSchema = new Schema(
     {
         userId: {
             type: String,
-            required: true,
+            required: false,
         },
         username: {
             type: String,
-            required: true,
+            required: false,
         },
         title: {
             type: String,
-            required: true,
+            required: false,
+        },
+        city: {
+            type: String,
+            required: false,
         },
         desc: {
             type: String,
-            required: true,
+            required: false,
         },
         totalStars: {
             type: Number,
@@ -29,15 +33,15 @@ const GigSchema = new Schema(
         },
         cat: {
             type: String,
-            required: true,
+            required: false,
         },
         price: {
             type: Number,
-            required: true,
+            required: false,
         },
         cover: {
             type: String,
-            required: true,
+            required: false,
         },
         images: {
             type: [String],
@@ -45,19 +49,19 @@ const GigSchema = new Schema(
         },
         shortTitle: {
             type: String,
-            required: true,
+            required: false,
         },
         shortDesc: {
             type: String,
-            required: true,
+            required: false,
         },
         deliveryTime: {
             type: Number,
-            required: true,
+            required: false,
         },
         revisionNumber: {
             type: Number,
-            required: true,
+            required: false,
         },
         features: {
             type: [String],
@@ -69,7 +73,7 @@ const GigSchema = new Schema(
         },
     },
     {
-        timestamps: true,
+        timestamps: false,
     }
 );
 

@@ -71,22 +71,16 @@ const Orders = () => {
             <h1>Orders</h1>
           </div>
           <table>
-            {data.map((order) => (
-              <tr key={order._id}>
-                <th>Seller</th>
-                <th>Buyer</th>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Contact</th>
-                {currentUser.isSeller && (order.sellerId === currentUser._id) && (
-                  <th>Mark as Complete</th>
-                )}
-                {order.isFinished && (
-                  <th>Rate</th>
-                )}
-              </tr>
-            ))}
+            <th>Seller</th>
+            <th>Buyer</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Contact</th>
+            {currentUser.isSeller && (
+              <th>Mark as Complete</th>
+            )}
+            <th>Rate</th>
             {data.map((order) => (
               <tr key={order._id} className={order.isFinished ? 'highlighted' : ''}>
                 <td>{order.sellerUsername}</td>
@@ -115,21 +109,41 @@ const Orders = () => {
                   </td>
                 )}
                 <td>
-                  {currentUser.isSeller && (order.sellerId === currentUser._id) && order.isFinished ? (
-                    <select className="rate-dropdown" onChange={(e) => handleRate(order, e.target.value)}>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  ) :
-                    <Link to={`/gig/${order.gigId}`}>
-                      <img
-                        className="complete"
-                        src="./img/star.png"
-                        alt=""
-                      /></Link>}
+                  {order.isFinished ? (
+                    currentUser.isSeller && (order.sellerId === currentUser._id) ? (
+                      <select className="rate-dropdown" onChange={(e) => handleRate(order, e.target.value)}>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    ) : (
+                      <Link to={`/gig/${order.gigId}`}>
+                        <img className="complete" src="./img/star.png" alt="" />
+                      </Link>
+                    )
+                  ) : (
+                    <span><td>
+                    {order.isFinished ? (
+                      currentUser.isSeller && (order.sellerId === currentUser._id) ? (
+                        <select className="rate-dropdown" onChange={(e) => handleRate(order, e.target.value)}>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      ) : (
+                        <Link to={`/gig/${order.gigId}`}>
+                          <img className="complete" src="./img/star.png" alt="" />
+                        </Link>
+                      )
+                    ) : (
+                      <span>Order in progress</span>
+                    )}
+                  </td></span>
+                  )}
                 </td>
               </tr>
             ))}

@@ -4,7 +4,7 @@ import "./CatCard.scss";
 
 function CatCard({ card }) {
 
-  const category = card.title
+  const category = card.title.toLowerCase();
   
   return (
     <Link to={`/gigs?cat=${category}`}>

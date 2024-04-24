@@ -103,7 +103,7 @@ function Register() {
             placeholder="+1 (XXX) XXX-XXXX"
             onChange={handleChange}
           />
-                    <label htmlFor="">City</label>
+          <label htmlFor="">City</label>
           <input
             name="city"
             type="text"
